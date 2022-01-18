@@ -1,0 +1,68 @@
+<!--
+    THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/zh/editor.html?c=doc-example/getting-started
+-->
+<!DOCTYPE html>
+<html style="height: 100%">
+
+<head>
+  <meta charset="utf-8" />
+</head>
+
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/echarts.min.js"></script>
+  <script type="text/javascript"
+    src="https://raw.githubusercontent.com/nodejs/node/v16.13.2/lib/child_process.js"></script>
+  <!-- Uncomment this line if you want to dataTool extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/dist/extension/dataTool.min.js"></script>
+        -->
+  <!-- Uncomment this line if you want to use gl extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-gl@2/dist/echarts-gl.min.js"></script>
+        -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts-stat@latest/dist/ecStat.min.js"></script>
+        -->
+  <!-- Uncomment this line if you want to use map
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/china.js"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5.2.2/map/js/world.js"></script>
+        -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=<Your Key Here>"></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@{{version}}/dist/extension/bmap.min.js"></script>
+        -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById("container");
+    var myChart = echarts.init(dom);
+    var app = {};
+
+    var option;
+
+    
+option = {
+  legend: {},
+  tooltip: {},
+  dataset: {
+    dimensions: ['GB', '2022-01-16', '2022-01-17', '2022-01-18'],
+    source: [
+{ GB: 'alpine', '2022-01-16': 1.1208477383479476, '2022-01-17': 1.589162160642445, '2022-01-18': 0.42339652869850397 },
+{ GB: 'home-assistant', '2022-01-16': 0.27382816653698683, '2022-01-17': 0.2640583021566272, '2022-01-18': 0.08738447353243828 },
+{ GB: 'onething-mechanical', '2022-01-16': 238.8628503177315, '2022-01-17': 270.3522777510807, '2022-01-18': 64.24832495953888 },
+{ GB: 'onething', '2022-01-16': 170.7172600645572, '2022-01-17': 264.2058288846165, '2022-01-18': 66.12408854160458 },
+{ GB: 'openwrt', '2022-01-16': 1344.7486099759117, '2022-01-17': 875.1784121515229, '2022-01-18': 318.7257637921721 },
+    ]
+  },
+  xAxis: { type: 'category' },
+  yAxis: {},
+  series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+};
+
+
+    if (option && typeof option === "object") {
+      myChart.setOption(option);
+    }
+  </script>
+</body>
+
+</html>
