@@ -1,7 +1,7 @@
 from mimetypes import init
 import sqlite3
 import time
-from datetime import date, timedelta
+import datetime
 
 
 class operations(object):
@@ -50,7 +50,7 @@ class operations(object):
 
             else:
                 # INSERT FAKE NETIN AND NETOUT FOR YESTERDAY TO CALCULATE THE DAILYIN AND DAILYOUT
-                yesterday = (date.today() + timedelta(days=-1)
+                yesterday = (datetime.datetime.now() + datetime.timedelta(days=-1)
                              ).strftime("%Y-%m-%d")
                 command = 'INSERT INTO traffic (VMID,DATE,NAME,NETIN,NETOUT,DAILYIN,DAILYOUT,RAW) \
                     VALUES ({},"{}","{}",{},{},{},{},"{}")'.format(
