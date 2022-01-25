@@ -39,6 +39,9 @@ for i in range(len(ls)):
             '2016', dates[1]).replace('2017', dates[2])
     elif 'source: [' in ls[i]:
         for k, v in dicList.items():
+            for d in dates:
+                if d not in v.keys():
+                    v[d] = {'dailyin' : 0,'dailyout' : 0}
             string = "{{ GB: '{}', '{}': {}, '{}': {}, '{}': {} }},".format(k, dates[0], v[dates[0]]['dailyout']/(
                 1024 * 1024 * 1024), dates[1], v[dates[1]]['dailyout']/(1024 * 1024 * 1024), dates[2], v[dates[2]]['dailyout']/(1024 * 1024 * 1024))
             ls.insert(i+1, string)

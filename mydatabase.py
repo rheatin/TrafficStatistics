@@ -88,6 +88,7 @@ class operations(object):
             self.cursor.execute(command)
             self.conn.commit()
 
+
     def selectInfo(self,stmt):
         cursor = self.cursor.execute(stmt)
         rs = cursor.fetchall()
