@@ -11,9 +11,11 @@ rs = op.selectInfo(
     "select VMID,NAME,DATE,DAILYIN,DAILYOUT from traffic where strftime('%Y-%m-%d', datetime('now'),'-2 days') <= strftime('%Y-%m-%d',DATE)")
 dicList = {}
 for row in rs:
-    if row[1] not in dicList:
+    if row[1] not in dicList :
         dicList[row[1]] = {}
     dicList[row[1]][row[2]] = {'dailyin': row[3], 'dailyout': row[4]}
+
+print(dicList)
 
 option = '''
 option = {
@@ -24,14 +26,19 @@ option = {
     source: [
     ]
   },
-  xAxis: { type: 'category' },
-  yAxis: {},
-  series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+  yAxis: { type: 'category' },
+  xAxis: {},
+series: [ 
+    { itemStyle : { normal: {label : {show: true,position: 'right',}}},type: 'bar' }, { itemStyle : { normal: {label : {show: true,position: 'right',}}},type: 'bar' }, { itemStyle : { normal: {label : {show: true,position: 'right',}}},type: 'bar' }]
 };
 '''
 
 ls = option.split('\n')
-dates = list(list(dicList.values())[0].keys())
+dates = []
+for value in list(dicList.values()):
+    if len(list(value.keys())) >= 3:
+        dates = list(value.keys())
+        break
 
 for i in range(len(ls)):
     if 'dimensions' in ls[i]:
@@ -54,7 +61,7 @@ with open('index.txt','r') as f:
 with open('index.html','w+') as f:
     f.write(cont)
 
-httpd = http.server.HTTPServer(
-    ("localhost", 9000), http.server.SimpleHTTPRequestHandler
-)
-httpd.serve_forever()
+# httpd = http.server.HTTPServer(
+#     ("0.0.0.0", 8000), http.server.SimpleHTTPRequestHandler
+# )
+# httpd.serve_forever()
