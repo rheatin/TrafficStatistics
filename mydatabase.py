@@ -88,9 +88,13 @@ class operations(object):
             self.cursor.execute(command)
             self.conn.commit()
 
-
-    def selectInfo(self,stmt):
-        cursor = self.cursor.execute(stmt)
-        rs = cursor.fetchall()
-        self.conn.commit()
-        return rs
+    def queryInfo(self,stmt):
+        if(stmt.startswith("select")):
+            cursor = self.cursor.execute(stmt)
+            rs = cursor.fetchall()
+            self.conn.commit()
+            return rs
+        else:
+            cursor = self.cursor.execute(stmt)
+            self.conn.commit()
+            return cursor.rowcount
