@@ -20,7 +20,6 @@ PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 47 6	* * 7	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.weekly )
 52 6	1 * *	root	test -x /usr/sbin/anacron || ( cd / && run-parts --report /etc/cron.monthly )
 
-59 23 * * * root python3 /root/TrafficStatistics.py > /root/log4sqlite.csv 2>&1
 59 23 * * * root python3 /root/TrafficMonitor.py > /root/log4postgres.csv 2>&1
 
 #
